@@ -1,4 +1,4 @@
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 
 keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
@@ -14,8 +14,10 @@ keyboard = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-                text="Let's go 🏆", url="https://example.com/letsgo"
+                text="Let's go 🏆",
+                web_app=WebAppInfo(url="webapp")
             )
         ]
     ]
 )
+

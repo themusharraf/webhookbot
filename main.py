@@ -1,9 +1,10 @@
+import logging
+
 import uvicorn
 from aiogram import Bot, Router, types, Dispatcher
-from aiogram.filters import Command,CommandStart
-from buttons import keyboard
+from aiogram.filters import CommandStart
 from fastapi import FastAPI, Request
-import logging
+from buttons import keyboard
 from config import API_TOKEN, WEBHOOK_PATH, WEBHOOK_URL
 
 bot = Bot(token=API_TOKEN)
@@ -18,8 +19,8 @@ logging.basicConfig(level=logging.INFO)
 
 @router.message(CommandStart())
 async def send_welcome(message: types.Message):
-    await message.answer("Welcome to the bot! Choose an option:")
-    await message.answer("Welcome to the bot! Choose an option:", reply_markup=keyboard)
+    await message.answer("""Текст, который будет написан после инициализации бота.\n\nEarn $SCLUB by completing tasks, playing mini-game and inviting your\nfrieds.Be among the first to join a wide-ranging sports ecosystem!\n\nДавайте добавим кнопки "Join Community, Follow SCLUB on X,  Let's go 🏆" под этим текстом.""",reply_markup=keyboard)
+
 
 
 @app.on_event("startup")
